@@ -84,7 +84,10 @@ define([
         });
 
         function undo() {
-            items.push(deleted.pop());
+            console.log(deleted().length);
+            if (deleted().length > 0) {
+                items.push(deleted.pop());
+            }
         }
 
         if (has(localStorage['todos-scalejs'])) {
