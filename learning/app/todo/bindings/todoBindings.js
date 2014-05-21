@@ -73,6 +73,11 @@ define(function () {
                 click: this.raiseEvent,
                 css: { selected: ctx.$parent.currentView() === this.name }
             };
+        },
+        'todo-items-left': function () {
+            return {
+                text: this.items().length - this.completedItems().length
+            };
         }
     };
 });
