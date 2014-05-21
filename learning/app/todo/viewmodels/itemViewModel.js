@@ -6,7 +6,7 @@ define([
 ) {
     'use strict';
 
-    return function (item, items) {
+    return function (item, items, deleted) {
         var observable = sandbox.mvvm.observable,
             //properties
             title = observable(item.title),
@@ -35,6 +35,7 @@ define([
         }
 
         function remove() {
+            deleted.push(this);
             items.remove(this);
         }
 

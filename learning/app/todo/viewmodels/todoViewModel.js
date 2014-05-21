@@ -16,11 +16,12 @@ define([
             raise = sandbox.state.raise,
             //properties
             items = observableArray(),
+            deleted = observableArray(),
             newItem = observable(),
+            currentView = observable(),
             checkAll,
             completedItems,
             viewableOptions,
-            currentView = observable(),
             viewableItems;
         
         viewableItems = computed(function () {
@@ -43,7 +44,7 @@ define([
         }
 
         function toItemViewModel(item) {
-            return itemViewModel(item, items);
+            return itemViewModel(item, items, deleted);
         }
 
         function addItem() {
@@ -82,6 +83,10 @@ define([
             };
         });
 
+        function undo() {
+            items.push(deleted.pop());
+        }
+
         if (has(localStorage['todos-scalejs'])) {
             items(JSON.parse(localStorage['todos-scalejs']).map(toItemViewModel));
         }
@@ -99,7 +104,9 @@ define([
             removeCompletedItems: removeCompletedItems,
             viewableOptions: viewableOptions,
             currentView: currentView,
-            viewableItems: viewableItems
+            viewableItems: viewableItems,
+            deleted: deleted,
+            undo: undo
         };
     };
 });
