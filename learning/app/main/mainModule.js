@@ -26,7 +26,7 @@ define([
         // Register application state for the module.
         registerStates('root',
             state('app',
-                routerState(
+                routerState('rout',
                     state('main',
                         onEntry(function () {
                             // create state properties for rendering todo module templates
