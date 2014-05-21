@@ -12,6 +12,7 @@ define([
             title = observable(item.title),
             completed = observable(item.completed),
             editMode = observable(false),
+            priority = observable(item.priority),
             previousTitle;
 
         function beginEdit() {
@@ -38,6 +39,13 @@ define([
             items.remove(this);
         }
 
+        function incrementPriority() {
+            priority(priority() + 1);
+        }
+
+        function decrementPriority() {
+            priority(priority() - 1);
+        }
 
         return {
             title: title,
@@ -46,7 +54,10 @@ define([
             beginEdit: beginEdit,
             endEdit: endEdit,
             remove: remove,
-            cancelEdit: cancelEdit
+            cancelEdit: cancelEdit,
+            priority: priority,
+            incrementPriority: incrementPriority,
+            decrementPriority: decrementPriority
         };
     };
 });

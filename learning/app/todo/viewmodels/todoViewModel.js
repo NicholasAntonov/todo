@@ -38,7 +38,8 @@ define([
         function toItem(itemVM) {
             return {
                 title: itemVM.title(),
-                completed:itemVM.completed()
+                completed: itemVM.completed(),
+                priority: itemVM.priority()
             };
         }
 
@@ -49,7 +50,7 @@ define([
         function addItem() {
             var item = newItem();
             if (has(item, "trim") && item.trim()) {
-                items.push( toItemViewModel( { title: item, completed: false } ) );
+                items.push( toItemViewModel( { title: item, completed: false, priority: 0 } ) );
             }
             newItem("");
         }
