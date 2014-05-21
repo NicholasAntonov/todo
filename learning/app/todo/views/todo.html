@@ -19,7 +19,7 @@
     <footer id="footer" data-class="todo-visible">
         <!-- This should be `0 items left` by default -->
         <span id="todo-count">
-            <strong data-bind="text: items().length"></strong>
+            <strong data-bind="text: items().length - completedItems().length"></strong>
             <!-- ko class:todo-count-text -->
             <!-- /ko-->
         </span>
