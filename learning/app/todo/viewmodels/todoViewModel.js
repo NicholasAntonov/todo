@@ -82,13 +82,13 @@ define([
             };
         });
 
-        computed(function () {
-            localStorage['todos-scalejs'] = JSON.stringify(items().map(toItem));
-        });
-
         if (has(localStorage['todos-scalejs'])) {
             items(JSON.parse(localStorage['todos-scalejs']).map(toItemViewModel));
         }
+
+        computed(function () {
+            localStorage['todos-scalejs'] = JSON.stringify(items().map(toItem));
+        });
 
         return {
             items: items,

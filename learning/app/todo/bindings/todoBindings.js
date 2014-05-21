@@ -57,7 +57,7 @@ define(function () {
         },
         'todo-count-text': function () {
             return {
-                text: (this.items().length === 1 ? 'item' : 'items') + ' left'
+                text: (this.items().length - this.completedItems().length === 1 ? 'item' : 'items') + ' left'
             };
         },
         'todo-clear-completed': function () {
