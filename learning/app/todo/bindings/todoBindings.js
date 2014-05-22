@@ -84,6 +84,13 @@ define(function () {
                 click: this.undo,
                 css: { 'undo-active': this.deleted().length > 0 }
             };
+        },
+        'todo-remove-element': function (ctx) {
+            return {
+                click: function () {
+                    ctx.$parent.remove(ctx.$index())
+                }
+            };
         }
     };
 });

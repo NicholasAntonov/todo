@@ -17,6 +17,7 @@ define([
             //properties
             items = observableArray(),
             deleted = observableArray(),
+            deletedIndices = new Array(),
             newItem = observable(),
             currentView = observable(),
             checkAll,
@@ -44,7 +45,7 @@ define([
         }
 
         function toItemViewModel(item) {
-            return itemViewModel(item, items, deleted);
+            return itemViewModel(item, items);
         }
 
         function addItem() {
@@ -85,8 +86,20 @@ define([
 
         function undo() {
             if (deleted().length > 0) {
-                items.push(deleted.pop());
+                var tempArray = items().slice();
+                var index = deletedIndices.pop();
+                var removedItems = tempArray.splice(index, items().length - index);
+                tempArray.push(deleted.pop());
+                removedItems.map(function (e) { tempArray.push(e) });
+                items(tempArray);
             }
+        }
+
+        function remove(index) {
+            console.log(index + "is being removed");
+            deleted.push(items()[index]);
+            items.splice(index, 1);
+            deletedIndices.push(index);
         }
 
         if (has(localStorage['todos-scalejs'])) {
@@ -108,7 +121,8 @@ define([
             currentView: currentView,
             viewableItems: viewableItems,
             deleted: deleted,
-            undo: undo
+            undo: undo,
+            remove: remove
         };
     };
 });

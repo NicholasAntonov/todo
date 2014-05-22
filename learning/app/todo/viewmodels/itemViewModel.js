@@ -6,7 +6,7 @@ define([
 ) {
     'use strict';
 
-    return function (item, items, deleted) {
+    return function (item, items) {
         var observable = sandbox.mvvm.observable,
             //properties
             title = observable(item.title),
@@ -34,19 +34,12 @@ define([
             editMode(false);
         }
 
-        function remove() {
-            deleted.push(this);
-            items.remove(this);
-        }
-
-
         return {
             title: title,
             completed: completed,
             editMode: editMode,
             beginEdit: beginEdit,
             endEdit: endEdit,
-            remove: remove,
             cancelEdit: cancelEdit
         };
     };
