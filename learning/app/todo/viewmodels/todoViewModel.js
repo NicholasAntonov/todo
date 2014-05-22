@@ -89,7 +89,7 @@ define([
 
         computed(function () {
             localStorage['todos-scalejs'] = JSON.stringify(items().map(toItem));
-        });
+        });        
 
         return {
             items: items,
@@ -100,7 +100,7 @@ define([
             removeCompletedItems: removeCompletedItems,
             viewableOptions: viewableOptions,
             currentView: currentView,
-            viewableItems: viewableItems
+            viewableItems: viewableItems,
         };
     };
 });

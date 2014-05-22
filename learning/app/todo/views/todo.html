@@ -9,8 +9,8 @@
                 <div class="view">
                     <input class="toggle" type="checkbox" data-bind="checked: completed">
                     <label data-bind="text: title() + ' p:' + priority()"></label>
-                    <button class="upbutton" data-bind="click: incrementPriority"></button>
-                    <button class="downbutton" data-bind="click: decrementPriority"></button>
+                    <button class="upbutton" data-class="todo-up-prio"></button>
+                    <button class="downbutton" data-class="todo-down-prio"></button>
                     <button class="destroy" data-bind="click: remove"></button>
                 </div>
                 <input class="edit" data-class="todo-edit" />

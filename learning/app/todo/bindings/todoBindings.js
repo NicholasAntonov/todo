@@ -23,7 +23,28 @@ define(function () {
                 }
             };
         },
+        'todo-up-prio': function () {
+            return {
+                click: this.incrementPriority,
+                event: {
+                    mouseover: this.toggleEdit,
+                    mouseout: this.toggleEdit
+                }
+            };
+        },
+        'todo-down-prio': function () {
+            return {
+                click: this.decrementPriority,
+                event: {
+                    mouseover: this.toggleEdit,
+                    mouseout: this.toggleEdit,
+                }
+            };
+        },
         'todo-item': function () {
+            var color = this.getColor;
+            var text = this.textColor;
+
             return {
                 css: {
                     completed: this.completed,
@@ -31,6 +52,10 @@ define(function () {
                 },
                 event: {
                     dblclick: this.beginEdit
+                },
+                style: {
+                    backgroundColor: 'rgba(' + color().r + ', ' + color().g + ', ' + color().b + ', .5 )',
+                    color:  text()
                 }
             };
         },
@@ -38,7 +63,8 @@ define(function () {
             var item = this;
 
             return {
-                value: this.title, valueUpdate: 'afterkeydown',
+                value: this.title,
+                valueUpdate: 'afterkeydown',
                 event: {
                     keyup: function (data, e) {
                         if (e.keyCode === ENTER_KEY) {
