@@ -56,7 +56,7 @@ define([
 
         function remove() {
             items.remove(this);
-        }
+        }        
 
         function incrementPriority() {
             if (priority() === MAX_PRIORITY) {
@@ -72,11 +72,9 @@ define([
             }
 
             priority(priority() - 1);
-        }        
-
+        }
+        
         function textColor() {
-            console.log("hurray");
-
             if (priority() > Math.floor(MAX_PRIORITY / 2)) {
                 return 'black';
             }
@@ -130,7 +128,7 @@ define([
             decrementPriority: decrementPriority,
             toggleEdit: toggleEdit, 
             getColor: getColor,
-            textColor: textColor
+            textColor: textColor,
         };
     };
 });

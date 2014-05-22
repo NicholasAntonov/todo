@@ -26,12 +26,18 @@ define([
         viewableItems = computed(function () {
             var view = currentView();
 
+            //sort the items
+            items().sort(function (left, right) {
+                return (left.priority() === right.priority()) ? ((left.title() === right.title()) ? 0 : (left.title() < right.title() ? -1 : 1)) : (left.priority() < right.priority() ? 1 : -1)
+            });
+            
             if (view === 'Active') {
                 return items().where('!$.completed()').toArray();
             }
             if (view === 'Completed') {
                 return items().where('$.completed()').toArray();
             }
+
             return items();
         });
 
@@ -52,6 +58,7 @@ define([
             if (has(item, "trim") && item.trim()) {
                 items.push( toItemViewModel( { title: item, completed: false, priority: 0 } ) );
             }
+
             newItem("");
         }
 
