@@ -54,10 +54,6 @@ define([
             canEdit = !canEdit;
         }
 
-        function remove() {
-            items.remove(this);
-        }        
-
         function incrementPriority() {
             if (priority() === MAX_PRIORITY) {
                 return;
@@ -108,7 +104,7 @@ define([
 
             shade =  Math.floor(255.0 / (MAX_PRIORITY - 1)) * ((MAX_PRIORITY - Math.abs(priority())));   
 
-            return {
+        return {
                 r: 255, 
                 g: shade,
                 b: 0
@@ -121,7 +117,6 @@ define([
             editMode: editMode,
             beginEdit: beginEdit,
             endEdit: endEdit,
-            remove: remove,
             cancelEdit: cancelEdit,
             priority: priority,
             incrementPriority: incrementPriority,

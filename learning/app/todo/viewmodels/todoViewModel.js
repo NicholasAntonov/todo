@@ -16,11 +16,13 @@ define([
             raise = sandbox.state.raise,
             //properties
             items = observableArray(),
+            deleted = observableArray(),
+            deletedIndices = new Array(),
             newItem = observable(),
+            currentView = observable(),
             checkAll,
             completedItems,
             viewableOptions,
-            currentView = observable(),
             viewableItems;
         
         viewableItems = computed(function () {
@@ -90,13 +92,32 @@ define([
             };
         });
 
+        function undo() {
+            if (deleted().length > 0) {
+                var tempArray = items().slice();
+                var index = deletedIndices.pop();
+                var removedItems = tempArray.splice(index, items().length - index);
+                tempArray.push(deleted.pop());
+                removedItems.map(function (e) { tempArray.push(e) });
+                items(tempArray);
+            }
+        }
+
+        function remove(index) {
+            console.log(index + "is being removed");
+            deleted.push(items()[index]);
+            items.splice(index, 1);
+            deletedIndices.push(index);
+        }
+
+
         if (has(localStorage['todos-scalejs'])) {
             items(JSON.parse(localStorage['todos-scalejs']).map(toItemViewModel));
         }
 
         computed(function () {
             localStorage['todos-scalejs'] = JSON.stringify(items().map(toItem));
-        });        
+        });
 
         return {
             items: items,
@@ -108,6 +129,9 @@ define([
             viewableOptions: viewableOptions,
             currentView: currentView,
             viewableItems: viewableItems,
+            deleted: deleted,
+            undo: undo,
+            remove: remove
         };
     };
 });

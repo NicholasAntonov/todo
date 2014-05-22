@@ -11,7 +11,7 @@
                     <label data-bind="text: title()"></label>
                     <button class="upbutton" data-class="todo-up-prio"></button>
                     <button class="downbutton" data-class="todo-down-prio"></button>
-                    <button class="destroy" data-bind="click: remove"></button>
+                    <button class="destroy" data-class="todo-remove-element"></button>
                 </div>
                 <input class="edit" data-class="todo-edit" />
             </li>
@@ -37,4 +37,5 @@
 
 <div id="todo_input_template">
     <input id="new-todo" data-class="todo-input" placeholder="What needs to be done?" autofocus>
+    <button id="undo" data-class="todo-undo-visible"></button>
 </div>
