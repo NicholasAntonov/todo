@@ -84,7 +84,6 @@ define([
         });
 
         function undo() {
-            console.log(deleted().length);
             if (deleted().length > 0) {
                 items.push(deleted.pop());
             }

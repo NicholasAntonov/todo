@@ -78,6 +78,12 @@ define(function () {
             return {
                 text: this.items().length - this.completedItems().length
             };
+        },
+        'undo-visible': function () {
+            return {
+                click: this.undo,
+                css: { 'undo-active': this.deleted().length > 0 }
+            };
         }
     };
 });
