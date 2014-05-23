@@ -6,7 +6,7 @@ define(function () {
     return {
         'todo-visible': function () {
             return {
-                visible: this.items().length > 0
+                visible: this.items().length > 0 || this.deleted().length > 0
             };
         },
         'todo-input': function () {

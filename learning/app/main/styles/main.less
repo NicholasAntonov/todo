@@ -278,22 +278,6 @@ label[for='toggle-all'] {
     }
 }
 
-#undo {
-	display: none;
-	position: absolute;
-    z-index: 2;
-	top: 28px;
-	right: 10px;
-	bottom: 0;
-	width: 40px;
-	height: 40px;
-	margin: 0;
-	font-size: 22px;
-	color: #a88a8a;
-	-webkit-transition: all 0.2s;
-	transition: all 0.2s;
-}
-
 #todo-list li .upbutton {
     top: -30px;
 }
@@ -354,7 +338,7 @@ label[for='toggle-all'] {
     }
 }
 
-#header:hover .undo-active {
+.undo-active {
   	display: block;
 }
 
@@ -419,6 +403,21 @@ label[for='toggle-all'] {
 
 #filters li a.selected {
 	font-weight: bold;
+}
+
+#undo {
+	float: right;
+    right: 140px;
+	position: relative;
+	line-height: 20px;
+	margin: 0;
+	font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+	color: #a88a8a;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
 }
 
 #clear-completed {
