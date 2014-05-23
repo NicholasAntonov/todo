@@ -37,13 +37,13 @@ define(function () {
                 click: this.decrementPriority,
                 event: {
                     mouseover: this.toggleEdit,
-                    mouseout: this.toggleEdit,
+                    mouseout: this.toggleEdit
                 }
             };
         },
         'todo-item': function () {
-            var color = this.getColor;
-            var text = this.textColor;
+            var color = this.getColor,
+                text = this.textColor;
 
             return {
                 css: {
@@ -54,12 +54,15 @@ define(function () {
                     dblclick: this.beginEdit
                 },
                 style: {
-                    backgroundColor: 'rgba(' + color().r + ', ' + color().g + ', ' + color().b + ', .5 )',
+                    backgroundColor: 'rgba(' +
+                        color().r + ', ' +
+                        color().g + ', ' +
+                        color().b + ', .5 )',
                     color:  text()
                 }
             };
         },
-        'todo-edit': function () {
+        'todo-edit': function (ctx) {
             var item = this;
 
             return {
@@ -68,7 +71,7 @@ define(function () {
                 event: {
                     keyup: function (data, e) {
                         if (e.keyCode === ENTER_KEY) {
-                            item.endEdit();
+                            item.endEdit(ctx);
                         } else if (e.keyCode === ESCAPE_KEY) {
                             item.cancelEdit();
                         }
@@ -83,7 +86,8 @@ define(function () {
         },
         'todo-count-text': function () {
             return {
-                text: (this.items().length - this.completedItems().length === 1 ? 'item' : 'items') + ' left'
+                text: (this.items().length - this.completedItems().length === 1 ?
+                        'item' : 'items') + ' left'
             };
         },
         'todo-clear-completed': function () {
@@ -114,7 +118,7 @@ define(function () {
         'todo-remove-element': function (ctx) {
             return {
                 click: function () {
-                    ctx.$parent.remove(ctx.$index())
+                    ctx.$parent.remove(ctx.$index());
                 }
             };
         }

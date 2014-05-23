@@ -17,22 +17,25 @@ define([
             //properties
             items = observableArray(),
             deleted = observableArray(),
-            deletedIndices = new Array(),
+            deletedIndices = [],
             newItem = observable(),
             currentView = observable(),
             checkAll,
             completedItems,
             viewableOptions,
             viewableItems;
-        
+
         viewableItems = computed(function () {
             var view = currentView();
 
             //sort the items
             items().sort(function (left, right) {
-                return (left.priority() === right.priority()) ? ((left.title() === right.title()) ? 0 : (left.title() < right.title() ? -1 : 1)) : (left.priority() < right.priority() ? 1 : -1)
+                return (left.priority() === right.priority()) ? (
+                    (left.title() === right.title()) ?
+                            0 : (left.title() < right.title() ? -1 : 1)
+                ) : (left.priority() < right.priority() ? 1 : -1);
             });
-            
+
             if (view === 'Active') {
                 return items().where('!$.completed()').toArray();
             }
@@ -58,7 +61,9 @@ define([
         function addItem() {
             var item = newItem();
             if (has(item, "trim") && item.trim()) {
-                items.push( toItemViewModel( { title: item, completed: false, priority: 0 } ) );
+                items.push(
+                    toItemViewModel({ title: item, completed: false, priority: 0 })
+                );
             }
 
             newItem("");
@@ -94,17 +99,16 @@ define([
 
         function undo() {
             if (deleted().length > 0) {
-                var tempArray = items().slice();
-                var index = deletedIndices.pop();
-                var removedItems = tempArray.splice(index, items().length - index);
+                var tempArray = items().slice(),
+                    index = deletedIndices.pop(),
+                    removedItems = tempArray.splice(index, items().length - index);
                 tempArray.push(deleted.pop());
-                removedItems.map(function (e) { tempArray.push(e) });
+                removedItems.map(function (e) { tempArray.push(e); });
                 items(tempArray);
             }
         }
 
         function remove(index) {
-            console.log(index + "is being removed");
             deleted.push(items()[index]);
             items.splice(index, 1);
             deletedIndices.push(index);

@@ -6,11 +6,10 @@ define([
 ) {
     'use strict';
 
-    return function (item, items) {
+    return function (item) {
         var MAX_PRIORITY = 6,
-            canEdit = true;
-
-        var observable = sandbox.mvvm.observable,
+            canEdit = true,
+            observable = sandbox.mvvm.observable,
             //properties
             title = observable(item.title),
             completed = observable(item.completed),
@@ -23,11 +22,11 @@ define([
                 return;
             }
 
-            previousTitle = this.title();
+            previousTitle = title();
             editMode(true);
         }
 
-        function endEdit() {
+        function endEdit(ctx) {
             if (!canEdit) {
                 return;
             }
@@ -37,7 +36,7 @@ define([
                 title(newTitle);
                 editMode(false);
             } else {
-                items.remove(this);
+                ctx.$parent.remove(ctx.$index);
             }
         }
 
@@ -69,7 +68,7 @@ define([
 
             priority(priority() - 1);
         }
-        
+
         function textColor() {
             if (priority() > Math.floor(MAX_PRIORITY / 2)) {
                 return 'black';
@@ -86,7 +85,8 @@ define([
             var shade;
 
             if (priority() < 0) {
-                shade = Math.floor(255.0 / MAX_PRIORITY) * (MAX_PRIORITY - Math.abs(priority()));
+                shade = Math.floor(255.0 / MAX_PRIORITY) *
+                    (MAX_PRIORITY - Math.abs(priority()));
                 return {
                     r: shade,
                     g: shade,
@@ -98,14 +98,14 @@ define([
                 return {
                     r: 255,
                     g: 255,
-                    b: 255 
+                    b: 255
                 };
             }
 
-            shade =  Math.floor(255.0 / (MAX_PRIORITY - 1)) * ((MAX_PRIORITY - Math.abs(priority())));   
-
-        return {
-                r: 255, 
+            shade = Math.floor(255.0 / (MAX_PRIORITY - 1)) *
+                ((MAX_PRIORITY - Math.abs(priority())));
+            return {
+                r: 255,
                 g: shade,
                 b: 0
             };
@@ -121,9 +121,9 @@ define([
             priority: priority,
             incrementPriority: incrementPriority,
             decrementPriority: decrementPriority,
-            toggleEdit: toggleEdit, 
+            toggleEdit: toggleEdit,
             getColor: getColor,
-            textColor: textColor,
+            textColor: textColor
         };
     };
 });

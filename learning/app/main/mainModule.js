@@ -19,7 +19,6 @@ define([
             state = sandbox.state.builder.state,
             onEntry = sandbox.state.builder.onEntry,
             routerState = sandbox.routing.routerState,
-            route = sandbox.routing.route,
             // vars
             mainVM = mainViewModel();
 

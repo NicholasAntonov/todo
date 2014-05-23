@@ -7,6 +7,7 @@
     <JSLintSkip>\Scripts\|\js\</JSLintSkip>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>91b474f5</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <StartAction>Program</StartAction>
@@ -107,4 +108,11 @@
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
   <Import Project="$(SolutionDir)\.scalejs\Scalejs.targets" />
+  <Import Project="..\packages\JSLintNet.MSBuild.1.6.2\build\JSLintNet.MSBuild.targets" Condition="Exists('..\packages\JSLintNet.MSBuild.1.6.2\build\JSLintNet.MSBuild.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\JSLintNet.MSBuild.1.6.2\build\JSLintNet.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JSLintNet.MSBuild.1.6.2\build\JSLintNet.MSBuild.targets'))" />
+  </Target>
 </Project>
