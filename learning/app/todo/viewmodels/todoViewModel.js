@@ -84,7 +84,7 @@ define([
 
         function removeCompletedItems() {
             completedItems().forEach(function (item) {
-                item.remove();
+                removeByItem(item);
             });
         }
 
@@ -106,6 +106,10 @@ define([
                 removedItems.map(function (e) { tempArray.push(e); });
                 items(tempArray);
             }
+        }
+
+        function removeByItem(obj) {
+            remove(items.indexOf(obj));
         }
 
         function remove(index) {
@@ -135,7 +139,8 @@ define([
             viewableItems: viewableItems,
             deleted: deleted,
             undo: undo,
-            remove: remove
+            remove: remove,
+            removeByItem: removeByItem
         };
     };
 });
