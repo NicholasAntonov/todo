@@ -6,7 +6,8 @@ var require = {
         }
     },
     "paths":  {
-        "bindings":  "Scripts/scalejs.mvvm.bindings",
+        "bindings": "Scripts/scalejs.mvvm.bindings",
+        "d3": "Scripts/d3.min",
         "history":  "Scripts/native.history",
         "jasmine":  "Scripts/jasmine",
         "jasmine-html":  "Scripts/jasmine-html",
