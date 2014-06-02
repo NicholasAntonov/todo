@@ -26,7 +26,8 @@ var require = {
         "rx.time":  "Scripts/rx.time",
         "sandbox":  "Scripts/scalejs.sandbox",
         "scalejs":  "Scripts/scalejs-0.3.3",
-        "scalejs.functional":  "Scripts/scalejs.functional-0.2.9.8",
+        "scalejs.functional": "Scripts/scalejs.functional-0.2.9.8",
+        "scalejs.graph": "extension/scalejs.graph",
         "scalejs.linq-linqjs":  "Scripts/scalejs.linq-linqjs-3.0.3.1",
         "scalejs.mvvm":  "Scripts/scalejs.mvvm-0.3.4.4",
         "scalejs.reactive":  "Scripts/scalejs.reactive-2.1.20.1",
@@ -39,7 +40,7 @@ var require = {
     },
     "scalejs":  {
         "extensions": [
-            "extension/scalejs.graph",
+            "scalejs.graph",
             "scalejs.functional",
             "scalejs.linq-linqjs",
             "scalejs.mvvm",
