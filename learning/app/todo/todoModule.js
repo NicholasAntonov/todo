@@ -30,6 +30,7 @@ define([
                     // pass the template bindings to the appropriate property
                     this.todoItems(template('todo_items_template', todo));
                     this.todoInput(template('todo_input_template', todo));
+                    this.todoGraph(template('todo_graph_template', todo));
                 }),
                 on('todo.All', gotoInternally('todo.all')),
                 on('todo.Active', gotoInternally('todo.active')),

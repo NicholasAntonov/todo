@@ -31,6 +31,7 @@ define([
                             // create state properties for rendering todo module templates
                             this.todoItems = mainVM.todoItems;
                             this.todoInput = mainVM.todoInput;
+                            this.todoGraph = mainVM.todoGraph;
                             // Render viewModel using 'main_template' template 
                             // (defined in main.html) and show it in the `root` region.
                             root(template('main_template', mainVM));

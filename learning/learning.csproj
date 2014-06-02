@@ -19,10 +19,12 @@
     <StartArguments>/site:learning</StartArguments>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="extension\customBindings.js" />
     <Content Include="app\todo\bindings\todoBindings.js" />
     <Content Include="app\todo\todoModule.js" />
     <Content Include="app\todo\viewmodels\itemViewModel.js" />
     <Content Include="app\todo\viewmodels\todoViewModel.js" />
+    <Content Include="extension\barTemplate.html" />
     <Content Include="app\todo\views\todo.html" />
     <Content Include="css\jasmine.css" />
     <Content Include="README.txt" />
@@ -100,6 +102,7 @@
     <None Include="app\todo\styles\todo.less" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <ScalejsProjectType>Application</ScalejsProjectType>
   </PropertyGroup>

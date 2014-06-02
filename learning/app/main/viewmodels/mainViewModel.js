@@ -11,11 +11,13 @@ define([
             observable = sandbox.mvvm.observable,
             // properties
             todoItems = observable(),
-            todoInput = observable();
+            todoInput = observable(),
+            todoGraph = observable();
 
         return {
             todoItems: todoItems,
-            todoInput: todoInput
+            todoInput: todoInput,
+            todoGraph: todoGraph
         };
     };
 });

@@ -1,8 +1,13 @@
 ﻿/*global define */
 /*jslint sloppy: true,unparam: true*/
-define(function () {
+define([
+    'sandbox!todo'
+], function () {
     var ENTER_KEY = 13,
         ESCAPE_KEY = 27;
+
+
+
     return {
         'todo-visible': function () {
             return {

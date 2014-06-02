@@ -38,7 +38,8 @@ var require = {
         "views":  "Scripts/scalejs.mvvm.views"
     },
     "scalejs":  {
-        "extensions":  [
+        "extensions": [
+            "extension/scalejs.graph",
             "scalejs.functional",
             "scalejs.linq-linqjs",
             "scalejs.mvvm",
