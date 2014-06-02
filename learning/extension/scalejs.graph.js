@@ -39,17 +39,13 @@ define([
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             unwrapObservable(valueAccessor());
             console.log('init');
+            return { controlsDescendantBindings: true };
         },
 
         update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var data = unwrapObservable(valueAccessor()).map(function (e) { return parseInt(e.title()); });
             console.log('update');
             console.log(data);
-            /*d3.select(element.children)
-                .data(data)
-                .transition()
-                .duration(2000)
-                .style('width', function (d) { return d + 'px' });*/
 
             ko.bindingHandlers.template.update(
                 element,
@@ -58,6 +54,14 @@ define([
                 viewModel,
                 bindingContext
             );
+
+            d3.selectAll('.databar')
+                .data(data)
+                .transition()
+                .duration(2000)
+                .style('width', function (d) { return d + 'px' });
+
+            return { controlsDescendantBindings: true };
         }
     };
 
