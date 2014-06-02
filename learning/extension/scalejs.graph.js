@@ -15,16 +15,20 @@ define([
 
     var registerTemplates = core.mvvm.registerTemplates,
         observable = core.mvvm.observable,
-        observableArray = core.mvvm.observableArray;
+        observableArray = core.mvvm.observableArray,
+        unwrapObservable = ko.utils.unwrapObservable
 
     registerTemplates(barTemplate);
 
 
     function wrapValueAccessor(value, element) {
+        var vm = {
+            width: value
+        };
         return function () {
             return {
                 name: "bar_template",
-                data: value
+                data: vm
             }
         }
 
@@ -33,19 +37,19 @@ define([
     ko.bindingHandlers.graph = {
 
         init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-            ko.utils.unwrapObservable(valueAccessor());
+            unwrapObservable(valueAccessor());
             console.log('init');
         },
 
         update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-            var data = ko.utils.unwrapObservable(valueAccessor()).map(function (e) { return parseInt(e.title()); });
+            var data = unwrapObservable(valueAccessor()).map(function (e) { return parseInt(e.title()); });
             console.log('update');
             console.log(data);
-            d3.select(element.children)
+            /*d3.select(element.children)
                 .data(data)
                 .transition()
                 .duration(2000)
-                .style('width', function (d) { return d + 'px' });
+                .style('width', function (d) { return d + 'px' });*/
 
             ko.bindingHandlers.template.update(
                 element,
