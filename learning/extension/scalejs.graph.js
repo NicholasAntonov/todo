@@ -58,10 +58,17 @@ define([
 
             d3.selectAll('.databar')
                 .data(data)
-                .transition()
+               .transition()
                     .duration(2000)
                     .delay(function (d, i) { return i * 100; })
-                    .style('width', function (d) { return d + 'px' });
+                    .style('width', function (d) { return d + 'px' })
+                    .style('background', function (d) {
+                        var ratio = d / 500,
+                            r = 137 - Math.floor(ratio * 37),
+                            g = 175 - Math.floor(ratio * 25),
+                            b = 207 - Math.floor(ratio * 15);
+                        return ('linear-gradient(170deg, lightsteelblue, rgb(' + r + ',' + g + ',' + b + ')');
+                    });
 
             return { controlsDescendantBindings: true };
         }

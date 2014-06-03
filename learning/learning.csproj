@@ -19,7 +19,6 @@
     <StartArguments>/site:learning</StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="extension\customBindings.js" />
     <Content Include="app\todo\bindings\todoBindings.js" />
     <Content Include="app\todo\todoModule.js" />
     <Content Include="app\todo\viewmodels\itemViewModel.js" />
