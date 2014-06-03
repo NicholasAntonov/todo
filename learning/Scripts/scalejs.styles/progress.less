@@ -1,0 +1,61 @@
+﻿.progressbar {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+#progress_bar__outer {
+    width: 100%;
+    height: 100%;
+    background-color: #555;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+
+//vars
+@right: 8px;
+@left: 20px;
+@color1: rgb(43, 194, 83);
+@color2: rgb(84, 240, 84);
+@perc1: 37%;
+@perc2: 69%;
+#progress_bar__inner {
+    background-color: blue;
+    height: 100%;
+    -webkit-border-top-right-radius: @right;
+    -webkit-border-bottom-right-radius: @right;
+    -moz-border-radius-topright: @right;
+    -moz-border-radius-bottomright: @right;
+    border-top-right-radius: @right;
+    border-bottom-right-radius: @right;
+    -webkit-border-top-left-radius: @left;
+    -webkit-border-bottom-left-radius: @left;
+    -moz-border-radius-topleft: @left;
+    -moz-border-radius-bottomleft: @left;
+    border-top-left-radius: @left;
+    border-bottom-left-radius: @left;
+    background-color: rgb(43, 194, 83);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @color1), color-stop(1, @color2));
+    background-image: -webkit-linear-gradient(center bottom, @color1 @perc1, @color2 @perc2);
+    background-image: -moz-liner-gradient(center bottom, @color1 @perc1, @color2 @perc2);
+    background-image: -ms-liner-gradient(center bottom, @color1 @perc1, @color2 @perc2);
+    background-image: -o-liner-gradient(center bottom, @color1 @perc1, @color2 @perc2);
+    -webkit-box-shadow:
+        inset 0 2px 9px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow:
+        inset 0 2px 9px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    box-shadow:
+        inset 0 2px 9px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+}
+
+#progress_bar__display {
+    color: white;
+}
