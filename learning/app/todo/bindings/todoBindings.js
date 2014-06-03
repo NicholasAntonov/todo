@@ -37,13 +37,16 @@ define(function () {
                 click: this.decrementPriority,
                 event: {
                     mouseover: this.toggleEdit,
-                    mouseout: this.toggleEdit,
+                    mouseout: this.toggleEdit
                 }
             };
         },
         'todo-item': function () {
-            var color = this.getColor;
-            var text = this.textColor;
+            var color = this.getColor,
+                text = this.textColor,
+                r = color().r,
+                g = color().g,
+                b = color().b;
 
             return {
                 css: {
@@ -54,7 +57,7 @@ define(function () {
                     dblclick: this.beginEdit
                 },
                 style: {
-                    backgroundColor: 'rgba(' + color().r + ', ' + color().g + ', ' + color().b + ', .5 )',
+                    backgroundColor: 'rgba(' + r + ', ' + g + ', ' + b + ', .5 )',
                     color:  text()
                 }
             };
@@ -82,8 +85,10 @@ define(function () {
             };
         },
         'todo-count-text': function () {
+            var number = this.items().length - this.completedItems().length;
+
             return {
-                text: (this.items().length - this.completedItems().length === 1 ? 'item' : 'items') + ' left'
+                text: (number === 1 ? 'item' : 'items') + ' left'
             };
         },
         'todo-clear-completed': function () {
@@ -114,7 +119,7 @@ define(function () {
         'todo-remove-element': function (ctx) {
             return {
                 click: function () {
-                    ctx.$parent.remove(ctx.$index())
+                    ctx.$parent.remove(ctx.$index());
                 }
             };
         }

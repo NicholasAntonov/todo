@@ -18,6 +18,9 @@
     <StartArguments>/site:learning</StartArguments>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app\main\styles\main.css">
+      <DependentUpon>main.less</DependentUpon>
+    </Content>
     <Content Include="app\todo\bindings\todoBindings.js" />
     <Content Include="app\todo\todoModule.js" />
     <Content Include="app\todo\viewmodels\itemViewModel.js" />
@@ -96,6 +99,9 @@
     <Content Include="Properties\learning.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app\main\styles\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </None>
     <None Include="app\todo\styles\todo.less" />
     <None Include="packages.config" />
   </ItemGroup>

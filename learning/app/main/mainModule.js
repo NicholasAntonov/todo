@@ -19,14 +19,13 @@ define([
             state = sandbox.state.builder.state,
             onEntry = sandbox.state.builder.onEntry,
             routerState = sandbox.routing.routerState,
-            route = sandbox.routing.route,
             // vars
             mainVM = mainViewModel();
 
         // Register application state for the module.
         registerStates('root',
             state('app',
-                routerState('rout',
+                routerState('route',
                     state('main',
                         onEntry(function () {
                             // create state properties for rendering todo module templates

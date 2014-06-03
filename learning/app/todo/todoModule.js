@@ -13,7 +13,6 @@ define([
 
     return function todoModule() {
         var // imports
-            root = sandbox.mvvm.root,
             template = sandbox.mvvm.template,
             registerStates = sandbox.state.registerStates,
             state = sandbox.state.builder.state,
