@@ -44,7 +44,7 @@ define([
 
         update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var data = unwrapObservable(valueAccessor()).map(function (e) { return parseInt(e.title()); }),
-                max = 500; //Math.max.apply( Math, data );
+                max = Math.max.apply( Math, data );
             console.log('update');
             console.log(data);
 
